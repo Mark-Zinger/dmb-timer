@@ -1,7 +1,7 @@
-import logo from './logo.svg';
-import solder from './solder.svg';
 import './App.css';
 import Countdown from 'react-countdown';
+import { useRef, useEffect } from 'react'
+
 
 // Random component
 const Completionist = () => <span>Кажется Миша уже едет домой!</span>;
@@ -14,30 +14,32 @@ const renderer = ({ days, hours, minutes, seconds, completed }) => {
   } else {
     // Render a countdown
     return <span>
-      Миша приедет домой через {days} дней {hours} часов {minutes} минут {seconds} секунд</span>;
+      Миша приедет домой через <br/> {days} дней {hours} часов {minutes} минут {seconds} секунд</span>;
   }
 };
 
+function BackgroundVideo () {
+  const ref = useRef();
+  return (
+    <video
+      className="background"
+      src='/videoplayback.mp4'
+      ref={ref}
+      autoPlay muted
+    />
+  )
+}
+
 function App() {
+
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
         <Countdown
           date={ new Date (1638448810000) }
           renderer={renderer}
         />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        {/* <BackgroundVideo/> */}
       </header>
     </div>
   );
