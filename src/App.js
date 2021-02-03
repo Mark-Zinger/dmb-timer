@@ -8,15 +8,26 @@ const Completionist = () => <span>Кажется Миша уже едет дом
  
 // Renderer callback with condition
 const renderer = ({ days, hours, minutes, seconds, completed }) => {
+
   if (completed) {
     // Render a completed state
     return <Completionist />;
   } else {
     // Render a countdown
     return <span>
-      Миша приедет домой через <br/> {days} дней {hours} часов {minutes} минут {seconds} секунд</span>;
+      Миша приедет домой через <br/> {days} {dayWord(days)} {hours} часов {minutes} минут {seconds} секунд
+    </span>;
   }
 };
+
+function dayWord (daysInt) {
+  const lastInt = daysInt.toString().slice(-1);
+  switch (lastInt) {
+    case '1': return 'день';
+    case '2' ||'3' || '4':  return 'дня';
+    case '5' || '6'||'7' || '8' ||'9' || '0': return 'дней';
+  }
+}
 
 function BackgroundVideo () {
   const ref = useRef();
