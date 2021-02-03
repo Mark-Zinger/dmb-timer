@@ -18,14 +18,13 @@ const renderer = ({ days, hours, minutes, seconds, completed }) => {
   }
 };
 
-function BackgroundVideo () {
+function Background () {
   const ref = useRef();
   return (
-    <video
+    <img
       className="background"
-      src='/videoplayback.mp4'
+      src='/background.jpg'
       ref={ref}
-      autoPlay muted
     />
   )
 }
@@ -39,7 +38,7 @@ function App() {
           date={ new Date (1638448810000) }
           renderer={renderer}
         />
-        {/* <BackgroundVideo/> */}
+        <Background/>
       </header>
     </div>
   );
