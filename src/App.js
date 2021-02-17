@@ -23,7 +23,7 @@ function Background () {
   return (
     <img
       className="background"
-      src='/background.jpg'
+      src='/dmb-timer/background.jpg'
       ref={ref}
     />
   )
